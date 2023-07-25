@@ -25,7 +25,7 @@ int _printf(const char *format, ...)
 			buffer[buff_ind++] = format[i];
 			if (buff_ind == BUFF_SIZE)
 				print_buffer(buffer, &buff_ind);
-			printd_chars++;
+			printed_chars++;
 		}
 		else
 		{
@@ -46,8 +46,9 @@ int _printf(const char *format, ...)
 
 	va_end(list);
 
-	return (printd_chars);
+	return (printed_chars);
 }
+
 
 /**
  * print_buffer - prints the contents of the buffer if it exist
@@ -59,5 +60,5 @@ void print_buffer(char buffer[], int *buff_ind)
 	if (*buff_ind > 0)
 		write(1, &buffer[0], *buff_ind);
 
-	*buff_ind - 0;
+	*buff_ind -= 0;
 }

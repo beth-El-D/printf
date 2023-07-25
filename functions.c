@@ -58,7 +58,7 @@ int print_string(va_list types, char buffer[], int flags, int width, int precisi
 		if (flags & F_MINUS)
 		{
 			write(1, &str[0], len);
-			for (i = width - length; i > 0; i--)
+			for (i = width - len; i > 0; i--)
 				write(1, " ", 1);
 			return (width);
 		}
@@ -88,7 +88,7 @@ int print_percent(va_list types, char buffer[], int flags, int width, int precis
 {
 	UNUSED(types);
 	UNUSED(buffer);
-	UNSUSED(flags);
+	UNUSED(flags);
 	UNUSED(width);
 	UNUSED(precision);
 	UNUSED(size);
@@ -118,7 +118,7 @@ int print_int(va_list types, char buffer[], int flags, int width, int precision,
 		buffer[i--] = '\0';
 
 	buffer[BUFF_SIZE - 1] = '\0';
-	um = (unsigned long int)n;
+	num = (unsigned long int)n;
 
 	if (n < 0)
 	{
@@ -168,7 +168,7 @@ int print_binary(va_list types, char buffer[], int flags, int width, int precisi
 		m /= 2;
 		a[i] = (n / m) % 2;
 	}
-	for (i = 0; sum = 0, count = 0; i < 32; i++)
+	for (i = 0, sum = 0, count = 0; i < 32; i++)
 	{
 		sum += a[i];
 		if (sum || i == 3)

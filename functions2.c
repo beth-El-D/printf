@@ -37,7 +37,7 @@ int print_pointer(va_list types, char buffer[], int flags, int width, int precis
 	}
 
 	if ((flags & F_ZERO) && !(flags & F_MINUS))
-		padd  '0';
+		padd = '0';
 	if (flags & F_PLUS)
 		extra_c = '+', length++;
 	else if (flags & F_SPACE)
@@ -69,7 +69,7 @@ int print_non_printable(va_list types, char buffer[], int flags, int width, int 
 	UNUSED(size);
 
 	if (str == NULL)
-		return (erite(1, "(null)", 6));
+		return (write(1, "(null)", 6));
 
 	while (str[i] != '\0')
 	{
@@ -106,13 +106,13 @@ int print_reverse(va_list types, char buffer[], int flags, int width, int precis
 	UNUSED(width);
 	UNUSED(size);
 
-	str = va_arg(types, char *s);
+	str = va_arg(types, char *);
 
 	if (str == NULL)
 	{
 		UNUSED(precision);
 
-		str - ")Null(";
+		str = ")Null(";
 	}
 	for (i = 0; str[i]; i++)
 		;
@@ -160,7 +160,7 @@ int print_rot13string(va_list types, char buffer[], int flags, int width, int pr
 			if (in[j] == str[i])
 			{
 				x = out[j];
-				write(l, &x, 1);
+				write(1, &x, 1);
 				count++;
 				break;
 			}
