@@ -13,6 +13,7 @@ int get_precision(const char *format, int *i, va_list list)
 
 	if (format[curr_i] != '.')
 		return (precision);
+
 	precision = 0;
 
 	for (curr_i += 1; format[curr_i] != '\0'; curr_i++)
@@ -25,7 +26,7 @@ int get_precision(const char *format, int *i, va_list list)
 		else if (format[curr_i] == '*')
 		{
 			curr_i++;
-			precision += va_arg(list, int);
+			precision = va_arg(list, int);
 			break;
 		}
 		else
